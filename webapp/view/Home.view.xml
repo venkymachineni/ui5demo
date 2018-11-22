@@ -1,0 +1,114 @@
+<mvc:View controllerName="com.cl.ZCLPROJ.controller.Home" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<IconTabBar id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding" select="onTabChangeEvent">
+						<items>
+							<IconTabFilter text="Containers and Layouts">
+								<Carousel>
+									<pages>
+										<Image src="img/Penguins.jpg" height="600px"/>
+										<Image src="img/Tulips.jpg" height="600px"/>
+										<Image src="img/Penguins.jpg" height="600px"/>
+										<Image src="img/Tulips.jpg" height="600px"/>
+									</pages>
+								</Carousel>
+							</IconTabFilter>
+							<IconTabFilter text="Data binding">
+								<MessageStrip type="Information" showIcon="true" text="Here's a Form Layout inside an Icon Tab Bar …"/>
+								<f:SimpleForm id="simpleFormChange" title="Address" editable="true" class="editableForm sapUiSmallMarginTopBottom">
+									<f:content>
+										<Label text="{i18n>layoutFormName}"/>
+										<Input value="{/Name}"/>
+										<Label text="{i18n>layoutFormStreet}"/>
+										<Input value="{address>/Street}"/>
+										<Label text="{i18n>layoutFormHouseNumber}"/>
+										<Input value="{address>/HouseNumber}"/>
+										<Label text="{i18n>layoutFormZIPCode}"/>
+										<Input value="{address>/ZIPCode}"/>
+										<Label text="{i18n>layoutFormCity}"/>
+										<Input value="{address>/City}"/>
+										<Label text="{i18n>layoutFormCountry}"/>
+										<Select>
+											<items>
+												<core:Item text="{i18n>layoutCountryGermany}"/>
+												<core:Item text="{i18n>layoutCountryUSA}"/>
+												<core:Item text="{i18n>layoutCountryEngland}"/>
+											</items>
+										</Select>
+										<!--<Label text="Fruits"/>
+										<MultiComboBox width="180px" class="sapUiTinyMarginTop" items="{fnmodel>/aggregateFnsitems}" selectionChange="onSelectionChange"
+											selectionFinish="onSelectionFinish">
+											<items>
+												<core:Item key="{fnmodel>key}" text="{fnmodel>value}"/>
+											</items>
+											
+										</MultiComboBox>-->
+										<HBox>
+											<Label text="{i18n>layoutFormCountry}"/>
+											<Input value="{address>/City}"/>
+										</HBox>
+									</f:content>
+								</f:SimpleForm>
+								<Toolbar>
+									<ToolbarSpacer/>
+									<Button text="{i18n>layoutPublishButton}" type="Accept" icon="sap-icon://outbox"/>
+									<Button text="{i18n>layoutDraftButton}" icon="sap-icon://save"/>
+								</Toolbar>
+							</IconTabFilter>
+							<IconTabFilter text="Aggregation binding">
+								<Button id="idBtn" text="Click to change" press="onBtnTextChange"/>
+								<Table id="idProductsTable" items="{ path : '/ProductSet' }" growing="true" growingScrollToLoad="true">
+									<headerToolbar>
+										<Toolbar>
+											<Title text="Products"/>
+											<ToolbarSpacer/>
+											<SearchField width="50%" search="onFilterProductsTable"/>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column >
+											<Text text="Product ID"/>
+										</Column>
+										<Column >
+											<Text text="Product Name"/>
+										</Column>
+										<Column>
+											<Text text="Category"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{ProductID}"/>
+												<Text text="{Name}"/>
+												<Text text="{Category}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+								<!--<List items="{/ProductSet}" headerText="Products" growing="true" growingThreshold="4" growingScrollToLoad="false">
+									<StandardListItem title="{parts:[{path:'Name'}],formatter: '.formatter.formatUpperCase'}" description="{ProductID}" iconDensityAware="false" iconInset="false" type="Active" press="onItemSelected"
+										info="$ {Price}" infoState="{= ${Price} > 500? 'Error' : 'Success'}" visible="{= ${Price} > 500}"/>
+								</List>-->
+								<Panel id="productDetailsPanel" headerText="product details" visible="false">
+									<l:Grid>
+										<Text text="Product ID: {ProductID}"/>
+										<Text text="Product name: {Name}"/>
+										<Text text="Description:\n {Description}"/>
+										<Text text="Price: {Price}"/>
+									</l:Grid>
+								</Panel>
+							</IconTabFilter>
+							<IconTabFilter id="tab2id" key="FragTab" text="Fragment Tab">
+								<!--<core:Fragment  fragmentName="com.cl.ZCLPROJ.view.Table" type="XML" />-->
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
