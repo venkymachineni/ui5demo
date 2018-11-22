@@ -7,6 +7,7 @@
 					<IconTabBar id="idIconTabBarNoIcons" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding" select="onTabChangeEvent">
 						<items>
 							<IconTabFilter text="Containers and Layouts">
+								<!--test commit 3-->
 								<Carousel>
 									<pages>
 										<Image src="img/Penguins.jpg" height="600px"/>
